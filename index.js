@@ -11,61 +11,51 @@ function append(el) {
 }
 
 function setTitle(text) {
-    let el = query('title');
-    if (!el) {
-        el = createEl('title');
-        el.text = text;
-        append(el);
-    } else {
-        el.text = text;
-    }
+    document.title = text
 }
 
 function getTitle() {
-    const el = query('title');
-    if (el) {
-        return el.text;
+    return document.title;
+}
+
+function setMeta(type, key, value) {
+    let el = query(`meta[${type}="${key}"]`);
+    if (!el) {
+        el = createEl('meta');
+        append(el);
+    }
+    el.setAttribute(type, key);
+    if (value)
+        el.setAttribute('content', value);
+}
+
+function getMeta(type, key) {
+    let el;
+    if (typeof key === 'undefined') {
+        el = query(`meta[${type}]`);
+        if (el)
+            return el.getAttribute(type);
+    } else {
+        el = query(`meta[${type}="${key}"]`);
+        if (el)
+            return el.getAttribute('content');
     }
 }
 
 function setMetaName(name, content) {
-    let el = query(`meta[name="${name}"]`);
-    if (!el) {
-        el = createEl('meta');
-        el.name = name;
-        el.content = content;
-        append(el);
-    } else {
-        el.name = name;
-        el.content = content;
-    }
+    setMeta('name', name, content);
 }
 
 function getMetaName(name) {
-    const el = query(`meta[name="${name}"]`);
-    if (el) {
-        return el.content;
-    }
+    return getMeta('name', name);
 }
 
-function setMetaProperty(name, content) {
-    let el = query(`meta[property="${name}"]`);
-    if (!el) {
-        el = createEl('meta');
-        el.property = name;
-        el.content = content;
-        append(el);
-    } else {
-        el.property = name;
-        el.content = content;
-    }
+function setMetaProperty(property, content) {
+    setMeta('property', property, content);
 }
 
-function getMetaProperty(name) {
-    const el = query(`meta[property="${name}"]`);
-    if (el) {
-        return el.content;
-    }
+function getMetaProperty(property) {
+    return getMeta('property', property);
 }
 
 module.exports = {
@@ -74,5 +64,7 @@ module.exports = {
     setMetaName,
     getMetaName,
     setMetaProperty,
-    getMetaProperty
+    getMetaProperty,
+    setMeta,
+    getMeta
 };
