@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Metaset</title>
+    <script src="../dist/index.js"></script>
+</head>
+<body>
+<button onclick="metaset.setTitle('Hello');showHead()">Set title</button>
+<button onclick="alert(metaset.getTitle());showHead()">Get title</button>
+<button onclick="metaset.setMetaName('description', 'Lorem ipsum dolor sit!');showHead()">Set meta description</button>
+<button onclick="alert(metaset.getMetaName('description'));showHead()">Get meta description</button>
+<button onclick="metaset.setMetaProperty('og:description', 'Lorem open graph');showHead()">Set open graph meta
+    description
+</button>
+<button onclick="alert(metaset.getMetaProperty('og:description'));showHead()">Get open graph meta description</button>
+<button onclick="alert(metaset.getMeta('charset'));showHead()">Get meta charset</button>
+<div>
+    <label for="head">Head content</label><br/>
+    <textarea style="width: 600px; height: 400px" readonly id="head"> </textarea>
+</div>
+<script>
+    function showHead() {
+        document.getElementById('head').value = document.head.innerHTML;
+    }
+
+    (function () {
+        showHead();
+    })();
+</script>
+</body>
+</html>

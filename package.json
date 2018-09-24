@@ -1,10 +1,15 @@
 {
   "name": "metaset",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Inject meta tag to head",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "parcel build index.js --no-cache --no-source-maps",
+    "preversion": "npm run-script test && npm run-script build && git commit -a -m BUILD",
+    "postversion": "npm publish && git push --follow-tags",
+    "release:major": "npm version major",
+    "release:minor": "npm version minor",
+    "release:patch": "npm version patch",
+    "build": "parcel build index.js --no-cache --no-source-maps --global metaset",
     "test": "mocha test"
   },
   "repository": {
