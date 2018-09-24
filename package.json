@@ -1,6 +1,6 @@
 {
   "name": "metaset",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Inject meta tag to head",
   "main": "dist/index.js",
   "scripts": {
