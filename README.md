@@ -5,7 +5,7 @@
 <a href="https://travis-ci.org/fabioricali/metaset" target="_blank"><img src="https://travis-ci.org/fabioricali/metaset.svg?branch=master" title="Build Status"/></a>
 <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" title="License: MIT"/></a>
 
-[Demo](https://github.com/fabioricali/metaset/blob/master/demo/index.html)
+[Demo](https://fabioricali.github.io/metaset/demo/)
 
 ## Installation
 ```
