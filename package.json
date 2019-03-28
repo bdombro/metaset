@@ -9,7 +9,7 @@
     "release:major": "npm version major",
     "release:minor": "npm version minor",
     "release:patch": "npm version patch",
-    "build": "parcel build index.js --no-cache --no-source-maps --global metaset",
+    "build": "parcel build index.js --no-cache --no-source-maps --global Metaset",
     "test": "mocha test"
   },
   "repository": {
