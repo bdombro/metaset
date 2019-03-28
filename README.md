@@ -14,7 +14,9 @@ npm install --save metaset
 
 ## Usage
 ```js
-import metaset from 'metaset'
+import Metaset from 'metaset'
+
+const metaset = new Metaset();
 
 // Set title
 metaset.setTitle('The title');

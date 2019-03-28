@@ -1,5 +1,7 @@
-const metaset = require('../');
+const Metaset = require('../');
 const assert = require('assert');
+
+const metaset = new Metaset();
 
 describe('metaset', function () {
 

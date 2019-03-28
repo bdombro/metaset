@@ -1,70 +1,70 @@
-function query(selector) {
-    return document.head.querySelector(selector)
-}
-
-function createEl(tag) {
-    return document.createElement(tag);
-}
-
-function append(el) {
-    return document.head.appendChild(el);
-}
-
-function setTitle(text) {
-    document.title = text
-}
-
-function getTitle() {
-    return document.title;
-}
-
-function setMeta(type, key, value) {
-    let el = query(`meta[${type}="${key}"]`);
-    if (!el) {
-        el = createEl('meta');
-        append(el);
+class Metaset {
+    
+    constructor(self = window) {
+        this.window = self;
+        console.log('this')
     }
-    el.setAttribute(type, key);
-    if (value)
-        el.setAttribute('content', value);
-}
-
-function getMeta(type, key) {
-    let el;
-    if (typeof key === 'undefined') {
-        el = query(`meta[${type}]`);
-        if (el)
-            return el.getAttribute(type);
-    } else {
-        el = query(`meta[${type}="${key}"]`);
-        if (el)
-            return el.getAttribute('content');
+    
+    query(selector) {
+        return this.window.document.head.querySelector(selector)
     }
+
+    createEl(tag) {
+        return this.window.document.createElement(tag);
+    }
+
+    append(el) {
+        return this.window.document.head.appendChild(el);
+    }
+
+    setTitle(text) {
+        this.window.document.title = text
+    }
+
+    getTitle() {
+        return this.window.document.title;
+    }
+
+    setMeta(type, key, value) {
+        let el = this.query(`meta[${type}="${key}"]`);
+        if (!el) {
+            el = this.createEl('meta');
+            this.append(el);
+        }
+        el.setAttribute(type, key);
+        if (value)
+            el.setAttribute('content', value);
+    }
+
+    getMeta(type, key) {
+        let el;
+        if (typeof key === 'undefined') {
+            el = this.query(`meta[${type}]`);
+            if (el)
+                return el.getAttribute(type);
+        } else {
+            el = this.query(`meta[${type}="${key}"]`);
+            if (el)
+                return el.getAttribute('content');
+        }
+    }
+
+    setMetaName(name, content) {
+        this.setMeta('name', name, content);
+    }
+
+    getMetaName(name) {
+        return this.getMeta('name', name);
+    }
+
+    setMetaProperty(property, content) {
+        this.setMeta('property', property, content);
+    }
+
+    getMetaProperty(property) {
+        return this.getMeta('property', property);
+    }
+
 }
 
-function setMetaName(name, content) {
-    setMeta('name', name, content);
-}
-
-function getMetaName(name) {
-    return getMeta('name', name);
-}
-
-function setMetaProperty(property, content) {
-    setMeta('property', property, content);
-}
-
-function getMetaProperty(property) {
-    return getMeta('property', property);
-}
-
-module.exports = {
-    setTitle,
-    getTitle,
-    setMetaName,
-    getMetaName,
-    setMetaProperty,
-    getMetaProperty,
-    setMeta,
-    getMeta
-};
+module.exports = Metaset;
