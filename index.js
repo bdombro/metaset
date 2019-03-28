@@ -2,7 +2,6 @@ class Metaset {
     
     constructor(self = window) {
         this.window = self;
-        console.log('this')
     }
     
     query(selector) {
